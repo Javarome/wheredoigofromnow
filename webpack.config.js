@@ -1,27 +1,42 @@
-const path = require('path');
+const path = require("path")
+const HtmlWebpackPlugin = require("html-webpack-plugin")
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: {
+    index: "./src/index.ts"
+  },
   mode: process.env.NODE_ENV || "production",
-  devtool: 'inline-source-map',
+  devtool: "inline-source-map",
+  devServer: {
+    contentBase: "./dist"
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+        title: "Where do I go from now?",
+        lang: "en",
+        template: "src/index.html",
+        js: ["bundle.js"]
+      }
+    )
+  ],
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      },
-    ],
+        use: "ts-loader",
+        exclude: /node_modules/
+      }
+    ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: [".tsx", ".ts", ".js"],
     modules: [
       path.resolve("./node_modules"),
-      path.resolve("./src"),
+      path.resolve("./src")
     ]
   },
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
-};
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist")
+  }
+}

@@ -7,7 +7,9 @@ export class Board {
 
   private readonly plugins: BoardPlugin[] = []
   private readonly items: BoardItem[] = []
-  view: BoardView
+
+  constructor(readonly view: BoardView) {
+  }
 
   run(user: User) {
     this.plugins.forEach(plugin => plugin.visit(user, this))
