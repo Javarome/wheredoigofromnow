@@ -1,9 +1,15 @@
 import {Board} from "board/Board"
 import {User} from "User"
 import {PalPlugin} from "board/plugins/PalPlugin"
-import {BoardView} from "board/view/BoardView"
+import {BoardWebView} from "board/view/BoardWebView"
 
-const board = new Board(new BoardView())
+let boardAnchor = "#boards"
+const anchor = window.document.querySelector(boardAnchor)
+if (!anchor) {
+  throw new Error(`Could not find board anchor "${boardAnchor}" in window document`)
+}
+const view = new BoardWebView(anchor)
+const board = new Board(view)
 
 let palPlugin = new PalPlugin()
 board.register(palPlugin)

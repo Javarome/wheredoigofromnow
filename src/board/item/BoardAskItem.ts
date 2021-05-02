@@ -6,7 +6,7 @@ export class BoardAskItem implements BoardItem{
   constructor(readonly question: string, type = "string") {
   }
 
-  putOn(board: Board): void {
+  putOn(board: Board): any {
     return board.view.prompt(this.question)
   }
 }

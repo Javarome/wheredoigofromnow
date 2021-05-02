@@ -1,14 +1,14 @@
 import {BoardPlugin} from "board/BoardPlugin"
 import {BoardItem} from "board/item/BoardItem"
 import {User} from "User"
-import {BoardView} from "board/view/BoardView"
+import {BoardWebView} from "board/view/BoardWebView"
 
 export class Board {
 
   private readonly plugins: BoardPlugin[] = []
   private readonly items: BoardItem[] = []
 
-  constructor(readonly view: BoardView) {
+  constructor(readonly view: BoardWebView) {
   }
 
   run(user: User) {

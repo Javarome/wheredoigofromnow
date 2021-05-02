@@ -6,8 +6,8 @@ import {BoardMessageItem} from "board/item/BoardMessageItem"
 
 export class PalPlugin implements BoardPlugin {
 
-  visit(user: User, board: Board): void {
-    const firstName = board.add(new BoardAskItem("What is your first name?"))
+  async visit(user: User, board: Board) {
+    const firstName = await board.add(new BoardAskItem("What is your first name?"))
     board.add(new BoardMessageItem(`Hello ${firstName}!`))
   }
 }
